@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-
-:root {
-  --primary-color: rgb(17, 86, 102);
-  --primary-color-darker: rgb(9, 48, 56);
-}
+@import "variables";
+@import "colors";
+@import "mixins";
 
 * {
   box-sizing: border-box;
@@ -13,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: var(--primary-color);
+  background: $primaryColor;
   font-family: 'Open sans', sans-serif;
   font-size: 1.3em;
   line-height: 1.5em;
@@ -27,9 +24,9 @@ body {
   border-radius: 10px;
 }
 
-h1 {
+.title-icon {
   text-transform: uppercase;
-  background-color: var(--primary-color);
+  background-color: $primaryColor;
   color: #fff;
   text-align: center;
   font-size: 2em;
@@ -40,10 +37,24 @@ h1 {
   display: flex;
   align-items: center;
   transition: .1s;
-  border-bottom: 2px solid var(--primary-color-darker);
-  border-right: 2px solid var(--primary-color-darker);
+  border-bottom: $primaryColor-dark;
+  border-right: $primaryColor-dark;
+
+  .icon {
+    padding-left: 1em;
+  }
 }
 
-.titleIcon {
-  padding-left: 1em;
+.input-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .input {
+    margin-top: 10rem;
+    border: none;
+    border-bottom: 2px solid $primaryColor;
+  }
+
+
 }
