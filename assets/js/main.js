@@ -12,9 +12,13 @@ const focusEv = focus.querySelectorAll('input').forEach(item => {
   item.addEventListener('focusout', () => {
     input1.classList.remove('focused')
     input2.classList.remove('focused')
-    input1.value === 0 ? input1.value = '' : null;
-    input2.value === 0 ? input2.value = '' : null;
   });
+  item.addEventListener('change', () => {
+    input1.value == 0 ? input1.value = '' : null;
+    input2.value == 0 ? input2.value = '' : null;
+  });
+
+
 });
 
 const mt = 1;
