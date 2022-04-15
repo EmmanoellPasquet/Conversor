@@ -26,15 +26,20 @@ function divide(n1, n2) {
   return n1 / n2;
 }
 
-const test = document.querySelector('.test')
-function getValue() {
+function getValue1() {
   input1.addEventListener('keyup', () => {
     input2.value = (input1.value * 3.28).toFixed(2)
-
-
   });
 }
-getValue();
+
+function getValue2() {
+  input2.addEventListener('keyup', () => {
+    input1.value = (input2.value / 3.28).toFixed(2)
+  });
+}
+getValue1();
+getValue2();
+
 
 
 
