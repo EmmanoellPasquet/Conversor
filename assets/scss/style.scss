@@ -1,39 +1,42 @@
 @import "variables";
 @import "colors";
 @import "mixins";
+//Local variables
+$containerWidth:640px;
+
+
 
 * {
   box-sizing: border-box;
   outline: 0;
+  font-family: $roboto;
 }
 
 body {
   margin: 0;
   padding: 0;
   background: $primaryColor;
-  font-family: 'Open sans', sans-serif;
-  font-size: 1.3em;
-  line-height: 1.5em;
+  font-size: $font;
 }
 
 .container {
-  max-width: 640px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  max-width: $containerWidth;
+  margin: ($gutter*3) auto;
+  background: $white;
+  padding: $gutter;
+  border-radius: $radius;
 }
 
 .title-icon {
   text-transform: uppercase;
   background-color: $primaryColor;
-  color: #fff;
+  color: $white;
   text-align: center;
-  font-size: 2em;
+  font-size: ($font*2);
   width: fit-content;
-  margin: auto auto 2em;
-  padding: .5em;
-  border-radius: 8px;
+  margin: auto auto ($gutter*2);
+  padding: ($gutter/2);
+  border-radius: $radius;
   display: flex;
   align-items: center;
   transition: .1s;
@@ -41,20 +44,78 @@ body {
   border-right: $primaryColor-dark;
 
   .icon {
-    padding-left: 1em;
+    padding-left: $gutter;
   }
 }
 
-.input-container {
+.inner.-container {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 
-  .input {
-    margin-top: 10rem;
-    border: none;
-    border-bottom: 2px solid $primaryColor;
+  .combobox.-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    border-bottom: ($borderLine / 2) solid lightgray;
+    border-radius: $radius;
+    margin-top: ($gutter * 2);
+
+    .combobox {
+      border: none;
+      width: 30%;
+      background-color: $backgroundBlue;
+      border-radius: ($radius/4);
+      margin-bottom: $gutter;
+      padding: ($gutter / 2) $gutter;
+      border-bottom: $borderLine/2 solid $primaryColor-light;
+      border-right: $borderLine/2 solid $primaryColor-light;
+
+    }
   }
 
+  .input.-inner-container {
+    margin-top: ($gutter * 4);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
+    .input.-first,
+    .input.-second {
+      border: none;
+      font-size: $font;
+      border-bottom: $borderLine solid $primaryColor;
+      border-radius: ($radius);
+      text-align: center;
+      padding: ($gutter / 2);
+      width: 15%;
+      margin: 0 $gutter;
+      background-color: $backgroundBlue;
+      transition: .3s ease-in-out;
+    }
+
+    i {
+      color: $primaryColor;
+      margin: 0 $gutter;
+      align-self: center;
+    }
+  }
+
+  .focused {
+    width: 20% !important;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

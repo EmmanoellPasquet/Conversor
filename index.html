@@ -8,6 +8,9 @@
   <title>Easy Conversor</title>
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+  <script src="./assets/js/main.js" defer></script>
+  <script src="https://kit.fontawesome.com/a14a5540ab.js" defer crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -15,15 +18,15 @@
   <section class="container">
     <h1 class="title-icon">Easy Conversor<img class="icon" src="assets/img/titleIcon.png" alt="List Icon title">
     </h1>
-    <div class="input outer-container">
+    <div class="inner -container">
       <div class="combobox -container">
-        <select class="combobox">
+        <select class="combobox combo1">
           <option value="1">Feet</option>
           <option value="2">Meter</option>
           <option value="3">Kilometer</option>
           <option value="4">Yard</option>
         </select>
-        <select class="combobox">
+        <select class="combobox combo2">
           <option value="11">Feet</option>
           <option value="22">Meter</option>
           <option value="33">Kilometer</option>
@@ -31,21 +34,18 @@
         </select>
       </div>
 
-      <div class="input inner-container">
-        <input class="input -first" type="text">
-        <input class="input -second" type="text">
+      <div class="input -inner-container focus">
+        <input placeholder="Metros" type="number" class="input -first this" type="text">
+        <i class="fa-solid fa-right-left"></i>
+        <input placeholder="Feet" type="number" min="1" class="input -second this" type="text">
       </div>
+      <p class="test">Here</p>
 
 
 
 
     </div>
-
-    <ul class="tasks"></ul>
-
   </section>
-
-  <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
