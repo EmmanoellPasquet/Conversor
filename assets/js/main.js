@@ -1,51 +1,132 @@
-const input1 = document.querySelector('.-first');
-const input2 = document.querySelector('.-second');
-const combo1 = document.querySelector('.combo1');
-const combo2 = document.querySelector('.combo2');
-const focus = document.querySelector('.focus');
 
-const focusEv = focus.querySelectorAll('input').forEach(item => {
-  item.addEventListener('focusin', () => {
-    input1.classList.add('focused')
-    input2.classList.add('focused')
+const inputFeet = document.getElementById("inputFeet");
+const inputMeters = document.getElementById("inputMeters");
+const inputInches = document.getElementById("inputInches");
+const inputcm = document.getElementById("inputCentimeter");
+const inputYards = document.getElementById("inputYards");
+const inputKilometers = document.getElementById("inputKilometers");
+const inputMiles = document.getElementById("inputMiles");
+const container = document.querySelector('.inner.-container');
+const allInputs = document.querySelectorAll('input');
+const clearBtn = document.querySelector('.clear');
+
+
+function lengthConverter() {
+
+  container.addEventListener('keyup', (e) => {
+    const el = e.target;
+
+    switch (el) {
+      case inputFeet:
+        inputMeters.value = (el.value / 3.2808).toFixed(2);
+        inputInches.value = (el.value * 12).toFixed(2);
+        inputcm.value = (el.value / 0.032808).toFixed();
+        inputYards.value = (el.value * 0.33333).toFixed(2);
+        inputKilometers.value = (el.value / 3280.8).toFixed(5);
+        inputMiles.value = (el.value * 0.00018939).toFixed(5);
+        break;
+
+      case inputMeters:
+
+        inputFeet.value = (el.value * 3.2808).toFixed(2);
+        inputInches.value = (el.value * 39.370).toFixed(2);
+        inputcm.value = (el.value / 0.01).toFixed();
+        inputYards.value = (el.value * 1.0936).toFixed(2);
+        inputKilometers.value = (el.value / 1000).toFixed(5);
+        inputMiles.value = (el.value * 0.00062137).toFixed(5);
+        break;
+
+      case inputInches:
+        inputFeet.value = (el.value * 0.083333).toFixed(3);
+        inputMeters.value = (el.value / 39.370).toFixed(3);
+        inputcm.value = (el.value / 0.39370).toFixed(2);
+        inputYards.value = (el.value * 0.027778).toFixed(3);
+        inputKilometers.value = (el.value / 39370).toFixed(6);
+        inputMiles.value = (el.value * 0.000015783).toFixed(6);
+        break;
+
+      case inputcm:
+        inputFeet.value = (el.value * 0.032808).toFixed(3);
+        inputMeters.value = (el.value / 100).toFixed(3);
+        inputInches.value = (el.value * 0.39370).toFixed(2);
+        inputYards.value = (el.value * 0.010936).toFixed(3);
+        inputKilometers.value = (el.value / 100000).toFixed(6);
+        inputMiles.value = (el.value * 0.0000062137).toFixed(6);
+        break;
+
+      case inputYards:
+        inputFeet.value = (el.value * 3).toFixed();
+        inputMeters.value = (el.value / 1.0936).toFixed(2);
+        inputInches.value = (el.value * 36).toFixed();
+        inputcm.value = (el.value / 0.010936).toFixed();
+        inputKilometers.value = (el.value / 1093.6).toFixed(5);
+        inputMiles.value = (el.value * 0.00056818).toFixed(5);
+        break;
+
+      case inputKilometers:
+        inputFeet.value = (el.value * 3280.8).toFixed();
+        inputMeters.value = (el.value * 1000).toFixed();
+        inputInches.value = (el.value * 39370).toFixed();
+        inputcm.value = (el.value * 100000).toFixed();
+        inputYards.value = (el.value * 1093.6).toFixed();
+        inputMiles.value = (el.value * 0.62137).toFixed(2);
+        break;
+
+      case inputMiles:
+        inputFeet.value = (el.value * 5280).toFixed();
+        inputMeters.value = (el.value / 0.00062137).toFixed();
+        inputInches.value = (el.value * 63360).toFixed();
+        inputcm.value = (el.value / 0.0000062137).toFixed();
+        inputYards.value = (el.value * 1760).toFixed();
+        inputKilometers.value = (el.value / 0.62137).toFixed(2);
+        break;
+
+      default:
+        break;
+    }
   });
-  item.addEventListener('focusout', () => {
-    input1.classList.remove('focused')
-    input2.classList.remove('focused')
+
+  clearBtn.addEventListener('click', () => {
+    allInputs.forEach(el => {
+      el.value = '';
+    });
   });
-  item.addEventListener('change', () => {
-    input1.value == 0 ? input1.value = '' : null;
-    input2.value == 0 ? input2.value = '' : null;
-  });
-
-
-});
-
-const mt = 1;
-const ft = 3;
-
-function multiply(n1, n2) {
-  return n1 * n2;
 }
 
-function divide(n1, n2) {
-  return n1 / n2;
+function footerAnimate() {
+  const text1 = document.querySelector('.gitText');
+  const text2 = document.querySelector('.linkedinText');
+  const iconGit = document.querySelector('.iconGit');
+  const iconLinkedin = document.querySelector('.iconLinkedin');
+  const winSize = window.innerWidth;
+
+  text1.innerHTML = text1.textContent.replace(/\S/g, "<span>$&</span>");
+  text2.innerHTML = text2.textContent.replace(/\S/g, "<span>$&</span>");
+
+  const element = document.querySelectorAll('span');
+
+  for (let i = 0; i < element.length; i++) {
+    element[i].style.transform = "rotate(" + i * 18 + "deg)"
+  }
+
+  const show = function showIcon(e) {
+    const el = e.type;
+    const test = this.children;
+
+    if (el === 'mouseover' || el === 'mouseout') {
+      for (let i = 0; i < test.length; i++) {
+        test[i].classList.contains('hidden') ? test[i].classList.remove('hidden') : test[i].classList.add('hidden');
+      }
+    }
+  }
+
+  winSize < 600 ? text1.classList.remove('hidden') + text2.classList.remove('hidden') : '';
+
+  iconGit.addEventListener('mouseover', show, false);
+  iconLinkedin.addEventListener('mouseover', show, false);
+  iconGit.addEventListener('mouseout', show, false);
+  iconLinkedin.addEventListener('mouseout', show, false);
 }
 
-function getValue1() {
-  input1.addEventListener('keyup', () => {
-    input2.value = (input1.value * 3.28).toFixed(2)
-  });
-}
-
-function getValue2() {
-  input2.addEventListener('keyup', () => {
-    input1.value = (input2.value / 3.28).toFixed(2)
-  });
-}
-getValue1();
-getValue2();
-
-
-
-
+footerAnimate();
+lengthConverter(this.IdleDeadline, this.value);
