@@ -178,13 +178,32 @@ body {
 }
 
 @media (max-width: 620px) {
+  body {
+    height: auto;
+    margin: 0 auto 5em;
+  }
+
   .title-icon {
     font-size: 1.4rem;
   }
+
+  .fa-brands {
+    font-size: 1.3em;
+  }
+
+  .icons p span {
+    position: absolute;
+    top: -35px;
+    text-transform: uppercase;
+    display: inline-block;
+    transform-origin: 0 35px;
+    font-size: .5em;
+  }
+
+  .container {
+    margin-top: $gutter;
+  }
 }
-
-
-
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
